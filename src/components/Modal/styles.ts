@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
-import { TagContainer } from '../Tag/styles'
+import styled from "styled-components";
+import { breakpoints, colors } from "../../styles";
+import { TagContainer } from "../Tag/styles";
 
 export const ContainerPoupap = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const ContainerPoupap = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
-`
+`;
 
 export const Poupap = styled.div`
   position: relative;
@@ -82,7 +82,7 @@ export const Poupap = styled.div`
       text-align: center;
     }
   }
-`
+`;
 
 export const SectionImgModal = styled.div`
   margin-right: 24px;
@@ -98,7 +98,7 @@ export const SectionImgModal = styled.div`
     margin-right: 0;
     margin-bottom: 12px;
   }
-`
+`;
 
 export const ModalImage = styled.img`
   display: block;
@@ -115,7 +115,7 @@ export const ModalImage = styled.img`
     width: 100%;
     height: auto;
   }
-`
+`;
 
 export const CloseImg = styled.div`
   position: absolute;
@@ -128,4 +128,4 @@ export const CloseImg = styled.div`
     width: 16px;
     height: 16px;
   }
-`
+`;

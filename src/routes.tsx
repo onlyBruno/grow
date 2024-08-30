@@ -1,8 +1,8 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from "react-router-dom";
 
-import Checkout from './pages/Checkout'
-import Home from './pages/Home'
-import Perfil from './pages/Perfil'
+import Checkout from "./pages/Checkout";
+import Home from "./pages/Home";
+import Perfil from "./pages/Perfil";
 
 const Rotas = () => (
   <Routes>
@@ -13,12 +13,12 @@ const Rotas = () => (
       element={
         <Checkout
           onClose={function (): void {
-            throw new Error('Function not implemented.')
+            throw new Error("Function not implemented.");
           }}
         />
       }
     />
   </Routes>
-)
+);
 
-export default Rotas
+export default Rotas;

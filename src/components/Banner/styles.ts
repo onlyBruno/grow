@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import styled from "styled-components";
+import { breakpoints, colors } from "../../styles";
 
 export const ImgBanner = styled.div`
   width: 100%;
@@ -63,7 +63,7 @@ export const ImgBanner = styled.div`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    content: '';
+    content: "";
     z-index: 0;
   }
-`
+`;

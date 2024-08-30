@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Checkout from '../../pages/Checkout'
-import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
-import { getTotalPrice, parseToBrl } from '../../utils'
-import Botao from '../Button'
-import * as S from './styles'
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Checkout from "../../pages/Checkout";
+import { RootReducer } from "../../store";
+import { close, remove } from "../../store/reducers/cart";
+import { getTotalPrice, parseToBrl } from "../../utils";
+import Botao from "../Button";
+import * as S from "./styles";
 
 const Cart = () => {
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const dispatch = useDispatch()
-  const [showCheckout, setShowCheckout] = useState(false)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
+  const [showCheckout, setShowCheckout] = useState(false);
 
   const closeCart = () => {
-    dispatch(close())
-  }
+    dispatch(close());
+  };
 
   const removeItem = (id: number) => {
-    dispatch(remove(id))
-  }
+    dispatch(remove(id));
+  };
 
   const goToCheckout = () => {
-    setShowCheckout(true)
-    closeCart()
-  }
+    setShowCheckout(true);
+    closeCart();
+  };
 
   return (
     <>
-      <S.CartContainer className={isOpen ? 'isOpen' : ''}>
+      <S.CartContainer className={isOpen ? "isOpen" : ""}>
         {!showCheckout && <S.Overlay onClick={closeCart} />}
         <S.Sidebar>
           {items.length > 0 ? (
@@ -67,7 +67,7 @@ const Cart = () => {
 
       {showCheckout && <Checkout onClose={() => setShowCheckout(false)} />}
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

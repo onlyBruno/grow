@@ -1,68 +1,68 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
-import Product, { Efood } from '../Product'
+import Product, { Efood } from "../Product";
 
-import Loader from '../Loader'
-import { ProductListContainer, ProductListItem } from './styles'
+import Loader from "../Loader";
+import { ProductListContainer, ProductListItem } from "./styles";
 
 export type Props = {
-  title: string
-  background: 'light' | 'dark'
-  efoods?: Efood[] | CardapioItem[]
-  isCardapio?: boolean
-  isLoading?: boolean
-}
+  title: string;
+  background: "light" | "dark";
+  efoods?: Efood[] | CardapioItem[];
+  isCardapio?: boolean;
+  isLoading?: boolean;
+};
 
 const ProductList: React.FC<Props> = ({
   title,
   background,
   efoods,
   isLoading,
-  isCardapio = false
+  isCardapio = false,
 }) => {
-  const { id } = useParams<{ id: string }>()
-  const location = useLocation()
+  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
   const [catalogoServico, setCatalogoServico] = useState<
     Efood[] | CardapioItem[]
-  >([])
+  >([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
           `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
-        )
+        );
         if (!response.ok) {
-          throw new Error('Erro ao carregar dados')
+          throw new Error("Erro ao carregar dados");
         }
-        const data = await response.json()
-        setCatalogoServico(Array.isArray(data) ? data : [data])
+        const data = await response.json();
+        setCatalogoServico(Array.isArray(data) ? data : [data]);
       } catch (error) {
-        console.error('Erro ao carregar dados:', error)
+        console.error("Erro ao carregar dados:", error);
       }
-    }
+    };
 
     if (efoods && efoods.length === 0) {
-      fetchData()
+      fetchData();
     } else {
-      setCatalogoServico(efoods ?? [])
+      setCatalogoServico(efoods ?? []);
     }
-  }, [id, efoods])
+  }, [id, efoods]);
 
   const getEfoodTags = (efood: Efood) => {
-    const tags: string[] = []
+    const tags: string[] = [];
     if (efood.tipo) {
-      tags.push(efood.tipo)
+      tags.push(efood.tipo);
     }
     if (efood.destacado) {
-      tags.push('Destaque da semana')
+      tags.push("Destaque da semana");
     }
-    return tags
-  }
+    return tags;
+  };
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
   return (
@@ -82,7 +82,7 @@ const ProductList: React.FC<Props> = ({
                   background={background}
                   currentItem={item}
                   shouldTruncateDescription={location.pathname.includes(
-                    '/perfil'
+                    "/perfil"
                   )}
                   id={item.id}
                 />
@@ -99,7 +99,7 @@ const ProductList: React.FC<Props> = ({
                   background={background}
                   currentItem={null}
                   shouldTruncateDescription={location.pathname.includes(
-                    '/perfil'
+                    "/perfil"
                   )}
                   id={efood.id.toString()}
                 />
@@ -107,7 +107,7 @@ const ProductList: React.FC<Props> = ({
         </ProductListItem>
       </ProductListContainer>
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

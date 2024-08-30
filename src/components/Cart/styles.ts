@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import { colors } from '../../styles'
-import { ButtonContainer } from '../Button/styles'
+import styled from "styled-components";
+import { colors } from "../../styles";
+import { ButtonContainer } from "../Button/styles";
 
-import fechar from '../../assets/icons/lixeira-de-reciclagem.png'
+import fechar from "../../assets/icons/lixeira-de-reciclagem.png";
 
 export const Overlay = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-`
+`;
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -26,7 +26,7 @@ export const CartContainer = styled.div`
   &.isOpen {
     display: flex;
   }
-`
+`;
 
 export const Sidebar = styled.aside`
   background-color: ${colors.LightSalmon};
@@ -55,7 +55,7 @@ export const Sidebar = styled.aside`
     text-align: center;
     color: ${colors.FloralWhite};
   }
-`
+`;
 
 export const Prices = styled.p`
   font-family: Roboto;
@@ -74,7 +74,7 @@ export const Prices = styled.p`
     line-height: 16.41px;
     text-align: right;
   }
-`
+`;
 
 export const CartItem = styled.li`
   display: flex;
@@ -119,4 +119,4 @@ export const CartItem = styled.li`
     right: 8px;
     cursor: pointer;
   }
-`
+`;

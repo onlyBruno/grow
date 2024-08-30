@@ -1,34 +1,34 @@
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
-import { useGetFeatureEfoodQuery } from '../../services/api'
+import { useGetFeatureEfoodQuery } from "../../services/api";
 
-import Banner from '../../components/Banner'
-import Header from '../../components/Header'
-import ProductList from '../../components/ProductList'
+import Banner from "../../components/Banner";
+import Header from "../../components/Header";
+import ProductList from "../../components/ProductList";
 
 type EfoodParams = {
-  id: string
-}
+  id: string;
+};
 
 const Perfil = () => {
-  const { id } = useParams() as EfoodParams
+  const { id } = useParams() as EfoodParams;
   const { data: catalogoServico, isLoading: isLoadingRestaurantMenu } =
-    useGetFeatureEfoodQuery(id)
+    useGetFeatureEfoodQuery(id);
 
   return (
     <>
-      <Header background={'dark'} />
+      <Header background={"dark"} />
 
       <Banner />
       <ProductList
         title=""
-        background={'dark'}
+        background={"dark"}
         efoods={catalogoServico?.cardapio}
         isCardapio
         isLoading={isLoadingRestaurantMenu}
       />
     </>
-  )
-}
+  );
+};
 
-export default Perfil
+export default Perfil;

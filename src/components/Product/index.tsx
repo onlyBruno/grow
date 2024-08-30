@@ -1,37 +1,37 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-import RestaurantRatingImg from '../../assets/icons/estrela.png'
+import RestaurantRatingImg from "../../assets/icons/estrela.png";
 
-import Tag from '../../components/Tag'
-import Botao from '../Button'
-import ModalPoupap from '../Modal'
+import Tag from "../../components/Tag";
+import Botao from "../Button";
+import ModalPoupap from "../Modal";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 export type Efood = {
-  id: string
-  capa: string
-  tipo: string
-  destacado: boolean
-  titulo: string
-  avaliacao: number
-  descricao: string
-  cardapio: CardapioItem[]
-}
+  id: string;
+  capa: string;
+  tipo: string;
+  destacado: boolean;
+  titulo: string;
+  avaliacao: number;
+  descricao: string;
+  cardapio: CardapioItem[];
+};
 
 type ProductProps = {
-  image: string
-  infos: string[]
-  title: string
-  nota?: number
-  description: string
-  to: string
-  background: 'light' | 'dark'
-  currentItem: CardapioItem | null
-  shouldTruncateDescription?: boolean
-  id: string
-}
+  image: string;
+  infos: string[];
+  title: string;
+  nota?: number;
+  description: string;
+  to: string;
+  background: "light" | "dark";
+  currentItem: CardapioItem | null;
+  shouldTruncateDescription?: boolean;
+  id: string;
+};
 
 const Product: React.FC<ProductProps> = ({
   image,
@@ -42,27 +42,27 @@ const Product: React.FC<ProductProps> = ({
   to,
   background,
   currentItem,
-  shouldTruncateDescription = false
+  shouldTruncateDescription = false,
 }) => {
-  const location = useLocation()
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const location = useLocation();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
-    setIsModalVisible(!isModalVisible)
-  }
+    setIsModalVisible(!isModalVisible);
+  };
 
   const buttonText = location.pathname.startsWith(`/perfil/`)
-    ? 'Adicionar ao carrinho'
-    : 'Saiba mais'
+    ? "Adicionar ao carrinho"
+    : "Saiba mais";
 
   const getTruncatedDescription = (description: string) => {
     if (description && description.length > 160) {
-      return description.slice(0, 160) + '...'
+      return description.slice(0, 160) + "...";
     }
-    return description
-  }
+    return description;
+  };
 
-  const isPerfilPage = location.pathname.startsWith(`/perfil/`)
+  const isPerfilPage = location.pathname.startsWith(`/perfil/`);
 
   return (
     <div className="container">
@@ -124,7 +124,7 @@ const Product: React.FC<ProductProps> = ({
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

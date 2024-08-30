@@ -1,80 +1,80 @@
-import { useFormik } from 'formik'
-import { useEffect, useState } from 'react'
-import InputMask from 'react-input-mask'
-import { Navigate, useNavigate } from 'react-router-dom'
-import * as Yup from 'yup'
+import { useFormik } from "formik";
+import { useEffect, useState } from "react";
+import InputMask from "react-input-mask";
+import { Navigate, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 // Funções
-import { usePurchaseMutation } from '../../services/api'
-import { open } from '../../store/reducers/cart'
-import { getTotalPrice, parseToBrl } from '../../utils'
+import { usePurchaseMutation } from "../../services/api";
+import { open } from "../../store/reducers/cart";
+import { getTotalPrice, parseToBrl } from "../../utils";
 
 // Componentes
-import Button from '../../components/Button'
-import Card from '../../components/Card'
+import Button from "../../components/Button";
+import Card from "../../components/Card";
 
 // Estilos
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { clear } from '../../store/reducers/cart'
-import * as S from './styles'
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../store";
+import { clear } from "../../store/reducers/cart";
+import * as S from "./styles";
 
 const Checkout = ({ onClose }: { onClose: () => void }) => {
-  const [payWith, setPayWith] = useState(false)
-  const [isOpenCart, setIsOpenCart] = useState(false)
+  const [payWith, setPayWith] = useState(false);
+  const [isOpenCart, setIsOpenCart] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
-  const { items } = useSelector((state: RootReducer) => state.cart)
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation();
+  const { items } = useSelector((state: RootReducer) => state.cart);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const form = useFormik({
     initialValues: {
-      fullName: '',
-      endereco: '',
-      cidade: '',
-      cep: '',
-      numero: '',
-      fullComplemento: '',
-      cardOwner: '',
-      numbCard: '',
-      cardCode: '',
-      expiresMonth: '',
-      expiresYear: ''
+      fullName: "",
+      endereco: "",
+      cidade: "",
+      cep: "",
+      numero: "",
+      fullComplemento: "",
+      cardOwner: "",
+      numbCard: "",
+      cardCode: "",
+      expiresMonth: "",
+      expiresYear: "",
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório'),
-      endereco: Yup.string().required('O campo é obrigatório'),
-      cidade: Yup.string().required('O campo é obrigatório'),
+        .min(5, "O nome precisa ter pelo menos 5 caracteres")
+        .required("O campo é obrigatório"),
+      endereco: Yup.string().required("O campo é obrigatório"),
+      cidade: Yup.string().required("O campo é obrigatório"),
       cep: Yup.string()
-        .length(10, 'O campo precisa ter 10 caracteres')
-        .required('O campo é obrigatório'),
-      numero: Yup.string().required('O campo é obrigatório'),
+        .length(10, "O campo precisa ter 10 caracteres")
+        .required("O campo é obrigatório"),
+      numero: Yup.string().required("O campo é obrigatório"),
       fullComplemento: Yup.string(),
 
       cardOwner: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(5, "O nome precisa ter pelo menos 5 caracteres")
         .when((values, schema) =>
-          payWith ? schema.required('O campo é obrigatorio') : schema
+          payWith ? schema.required("O campo é obrigatorio") : schema
         ),
       numbCard: Yup.string().when((values, schema) =>
-        payWith ? schema.required('O campo é obrigatorio') : schema
+        payWith ? schema.required("O campo é obrigatorio") : schema
       ),
       cardCode: Yup.string()
-        .max(3, 'São permitidos até 3 dígitos')
+        .max(3, "São permitidos até 3 dígitos")
         .when((values, schema) =>
-          payWith ? schema.required('O campo é obrigatorio') : schema
+          payWith ? schema.required("O campo é obrigatorio") : schema
         ),
       expiresMonth: Yup.string().when((values, schema) =>
-        payWith ? schema.required('O campo é obrigatorio') : schema
+        payWith ? schema.required("O campo é obrigatorio") : schema
       ),
       expiresYear: Yup.string().when((values, schema) =>
-        payWith ? schema.required('O campo é obrigatorio') : schema
-      )
+        payWith ? schema.required("O campo é obrigatorio") : schema
+      ),
     }),
     onSubmit: (values) => {
       purchase({
@@ -85,8 +85,8 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
             city: values.cidade,
             zipCode: values.cep,
             number: Number(values.numero),
-            complement: values.fullComplemento
-          }
+            complement: values.fullComplemento,
+          },
         },
         payment: {
           card: {
@@ -95,25 +95,25 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
             code: Number(values.cardCode),
             expires: {
               month: Number(values.expiresMonth),
-              year: Number(values.expiresYear)
-            }
-          }
+              year: Number(values.expiresYear),
+            },
+          },
         },
         products: items.map((item) => ({
           id: item.id,
-          price: item.preco
-        }))
-      })
-    }
-  })
+          price: item.preco,
+        })),
+      });
+    },
+  });
 
   const checkInputHasError = (fieldName: string) => {
-    const isTouched = fieldName in form.touched
-    const isInvalid = fieldName in form.errors
-    const hasError = isTouched && isInvalid
+    const isTouched = fieldName in form.touched;
+    const isInvalid = fieldName in form.errors;
+    const hasError = isTouched && isInvalid;
 
-    return hasError
-  }
+    return hasError;
+  };
   const handleContinueToPayment = () => {
     form.setTouched({
       fullName: true,
@@ -125,49 +125,49 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       numbCard: true,
       cardCode: true,
       expiresMonth: true,
-      expiresYear: true
-    })
+      expiresYear: true,
+    });
     const isDeliveryValid =
       !form.errors.fullName &&
       !form.errors.endereco &&
       !form.errors.cidade &&
       !form.errors.cep &&
       !form.errors.numero &&
-      form.values.fullName !== '' &&
-      form.values.endereco !== '' &&
-      form.values.cidade !== '' &&
-      form.values.cep !== '' &&
-      form.values.numero !== ''
+      form.values.fullName !== "" &&
+      form.values.endereco !== "" &&
+      form.values.cidade !== "" &&
+      form.values.cep !== "" &&
+      form.values.numero !== "";
 
     if (isDeliveryValid) {
-      setPayWith(true)
+      setPayWith(true);
     }
-  }
+  };
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(clear())
+      dispatch(clear());
     }
-  }, [isSuccess, dispatch])
+  }, [isSuccess, dispatch]);
 
   const openCart = () => {
-    dispatch(open())
-  }
+    dispatch(open());
+  };
 
   const handleConclude = () => {
-    setIsOpenCart(true)
-    onClose()
-    navigate('/')
-  }
+    setIsOpenCart(true);
+    onClose();
+    navigate("/");
+  };
 
   const handleVoltar = () => {
-    setIsOpenCart(true)
-    onClose()
-    openCart()
-  }
+    setIsOpenCart(true);
+    onClose();
+    openCart();
+  };
 
   if (items.length === 0 && !isSuccess) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
@@ -224,7 +224,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                       value={form.values.fullName}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
-                      className={checkInputHasError('fullName') ? 'error' : ''}
+                      className={checkInputHasError("fullName") ? "error" : ""}
                     />
                   </S.InputGroup>
                   <S.InputGroup>
@@ -236,7 +236,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                       value={form.values.endereco}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
-                      className={checkInputHasError('endereco') ? 'error' : ''}
+                      className={checkInputHasError("endereco") ? "error" : ""}
                     />
                   </S.InputGroup>
                   <S.InputGroup>
@@ -248,7 +248,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                       value={form.values.cidade}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
-                      className={checkInputHasError('cidade') ? 'error' : ''}
+                      className={checkInputHasError("cidade") ? "error" : ""}
                     />
                   </S.InputGroup>
                   <S.InputGroup className="InputFlex">
@@ -261,7 +261,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                         value={form.values.cep}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
-                        className={checkInputHasError('cep') ? 'error' : ''}
+                        className={checkInputHasError("cep") ? "error" : ""}
                         mask="99.999-999"
                       />
                     </div>
@@ -274,7 +274,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                         value={form.values.numero}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
-                        className={checkInputHasError('numero') ? 'error' : ''}
+                        className={checkInputHasError("numero") ? "error" : ""}
                       />
                     </div>
                   </S.InputGroup>
@@ -290,7 +290,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                       className={
-                        checkInputHasError('fullComplemento') ? 'error' : ''
+                        checkInputHasError("fullComplemento") ? "error" : ""
                       }
                     />
                   </S.InputGroup>
@@ -304,8 +304,8 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                     disabled={isLoading}
                   >
                     {isLoading
-                      ? 'Continuar com ...'
-                      : 'Continuar com o pagamento'}
+                      ? "Continuar com ..."
+                      : "Continuar com o pagamento"}
                   </Button>
                   <Button
                     type="button"
@@ -335,7 +335,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                         className={
-                          checkInputHasError('cardOwner') ? 'error' : ''
+                          checkInputHasError("cardOwner") ? "error" : ""
                         }
                       />
                     </S.InputGroupPaymentBlock>
@@ -350,7 +350,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
                           className={
-                            checkInputHasError('numbCard') ? 'error' : ''
+                            checkInputHasError("numbCard") ? "error" : ""
                           }
                           mask="9999 9999 9999 9999"
                         />
@@ -365,7 +365,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
                           className={
-                            checkInputHasError('cardCode') ? 'error' : ''
+                            checkInputHasError("cardCode") ? "error" : ""
                           }
                           maxLength={3}
                           pattern="\d{1,3}"
@@ -388,7 +388,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
                           className={
-                            checkInputHasError('expiresMonth') ? 'error' : ''
+                            checkInputHasError("expiresMonth") ? "error" : ""
                           }
                           mask="99"
                         />
@@ -408,7 +408,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
                           className={
-                            checkInputHasError('expiresYear') ? 'error' : ''
+                            checkInputHasError("expiresYear") ? "error" : ""
                           }
                           mask="9999"
                         />
@@ -424,8 +424,8 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
                       disabled={isLoading}
                     >
                       {isLoading
-                        ? 'Finalizando compra ...'
-                        : 'Finalizar compra'}
+                        ? "Finalizando compra ..."
+                        : "Finalizar compra"}
                     </Button>
                     <Button
                       type="button"
@@ -443,7 +443,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
         </Card>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;

@@ -1,23 +1,23 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import ImgPoupapClose from '../../assets/icons/close.png'
+import ImgPoupapClose from "../../assets/icons/close.png";
 
-import { add, CartItem, open } from '../../store/reducers/cart'
+import { add, CartItem, open } from "../../store/reducers/cart";
 
-import Botao from '../Button'
-import Tag from '../Tag'
+import Botao from "../Button";
+import Tag from "../Tag";
 
-import { parseToBrl } from '../../utils'
-import * as S from './styles'
+import { parseToBrl } from "../../utils";
+import * as S from "./styles";
 
 interface ModalPoupapProps {
-  onClose: () => void
-  foto: string
-  descricao: string
-  preco: number
-  nome: string
-  porcao: string
+  onClose: () => void;
+  foto: string;
+  descricao: string;
+  preco: number;
+  nome: string;
+  porcao: string;
 }
 
 const ModalPoupap: React.FC<ModalPoupapProps> = ({
@@ -26,12 +26,12 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
   descricao,
   preco,
   nome,
-  porcao
+  porcao,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const items = useSelector(
     (state: { cart: { items: CartItem[] } }) => state.cart.items
-  )
+  );
 
   const handleAddToCart = () => {
     const item: CartItem = {
@@ -40,19 +40,19 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
       descricao,
       preco,
       nome,
-      porcao
-    }
+      porcao,
+    };
 
-    const existingItem = items.find((cartItem) => cartItem.nome === item.nome)
+    const existingItem = items.find((cartItem) => cartItem.nome === item.nome);
 
     if (!existingItem) {
-      dispatch(add(item))
-      dispatch(open())
-      onClose()
+      dispatch(add(item));
+      dispatch(open());
+      onClose();
     } else {
-      alert('O prato já está no carrinho!')
+      alert("O prato já está no carrinho!");
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -76,7 +76,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
               <Botao
                 type="button"
                 onClick={handleAddToCart}
-                title={'Adicionar ao carrinho'}
+                title={"Adicionar ao carrinho"}
                 background="dark"
               >
                 Adicionar ao carrinho - {parseToBrl(preco)}
@@ -86,7 +86,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
         </S.Poupap>
       </S.ContainerPoupap>
     </div>
-  )
-}
+  );
+};
 
-export default ModalPoupap
+export default ModalPoupap;

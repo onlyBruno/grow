@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
-import { TagContainer } from '../Tag/styles'
+import styled from "styled-components";
+import { breakpoints, colors } from "../../styles";
+import { TagContainer } from "../Tag/styles";
 
 export const CardRestaurant = styled.div`
   width: 472px;
@@ -16,7 +16,7 @@ export const CardRestaurant = styled.div`
     max-width: 100%;
     height: auto;
   }
-`
+`;
 export const CardConteiner = styled.div`
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
@@ -25,7 +25,7 @@ export const CardConteiner = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 100%;
   }
-`
+`;
 
 export const Imagem = styled.div`
   background-repeat: no-repeat;
@@ -41,7 +41,7 @@ export const Imagem = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 100%;
   }
-`
+`;
 
 export const ContainerDescritivo = styled.div`
   width: 472px;
@@ -85,14 +85,14 @@ export const ContainerDescritivo = styled.div`
       margin: 0;
     }
   }
-`
+`;
 export const RatingStar = styled.div`
   width: 21px;
   height: 21px;
   padding: 0.5px 0px 0.5px 0px;
   gap: 0px;
   opacity: 0px;
-`
+`;
 export const LineSection = styled.div`
   display: flex;
   align-items: center;
@@ -124,7 +124,7 @@ export const LineSection = styled.div`
     align-items: center;
     justify-content: space-between;
   }
-`
+`;
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
@@ -133,4 +133,4 @@ export const Infos = styled.div`
   ${TagContainer} {
     margin: 0 0 0 8px;
   }
-`
+`;

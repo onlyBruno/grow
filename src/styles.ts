@@ -1,19 +1,19 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const colors = {
-  LightSalmon: '#E66767',
-  BlanchedAlmond: '#FFEBD9',
-  white: '#FFFFFF',
-  BrightOrange: '#FFB930',
-  FloralWhite: '#FFF8F2',
-  CrimsonRed: '#fae0e4'
-}
+  LightSalmon: "#E66767",
+  BlanchedAlmond: "#FFEBD9",
+  white: "#FFFFFF",
+  BrightOrange: "#FFB930",
+  FloralWhite: "#FFF8F2",
+  CrimsonRed: "#fae0e4",
+};
 
 export const breakpoints = {
-  desktop: '1024px',
-  tablet: '768px',
-  mobile: '480px'
-}
+  desktop: "1024px",
+  tablet: "768px",
+  mobile: "480px",
+};
 
 export const GlobalCSS = createGlobalStyle`
 
@@ -61,4 +61,4 @@ export const GlobalCSS = createGlobalStyle`
 }
 }
 
-`
+`;

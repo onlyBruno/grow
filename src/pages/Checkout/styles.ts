@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { ButtonContainer } from '../../components/Button/styles'
-import { colors } from '../../styles'
+import styled from "styled-components";
+import { ButtonContainer } from "../../components/Button/styles";
+import { colors } from "../../styles";
 
 export const Row = styled.div`
   display: block;
@@ -9,7 +9,7 @@ export const Row = styled.div`
   small {
     color: ${colors.BlanchedAlmond};
   }
-`
+`;
 
 export const InputGroup = styled.div`
   label {
@@ -55,7 +55,7 @@ export const InputGroup = styled.div`
       margin-top: 0;
     }
   }
-`
+`;
 
 export const InputGroupPaymentBlock = styled.div`
   display: block;
@@ -88,7 +88,7 @@ export const InputGroupPaymentBlock = styled.div`
       background: ${colors.CrimsonRed};
     }
   }
-`
+`;
 
 export const InputGroupPaymentFlex = styled.div`
   display: flex;
@@ -168,7 +168,7 @@ export const InputGroupPaymentFlex = styled.div`
   .InputNumbCard + .InputCvv {
     margin-left: 30px;
   }
-`
+`;
 
 export const TitleH3 = styled.h3`
   font-family: Roboto;
@@ -178,7 +178,7 @@ export const TitleH3 = styled.h3`
   text-align: left;
   color: ${colors.BlanchedAlmond};
   margin-bottom: 16px;
-`
+`;
 
 export const Paragrafo = styled.p`
   font-family: Roboto;
@@ -187,7 +187,7 @@ export const Paragrafo = styled.p`
   line-height: 22px;
   text-align: left;
   color: ${colors.BlanchedAlmond};
-`
+`;
 
 export const TabButton = styled.div`
   margin-top: 24px;
@@ -199,7 +199,7 @@ export const TabButton = styled.div`
     padding: 4px 0;
     margin-bottom: 8px;
   }
-`
+`;
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -212,7 +212,7 @@ export const ModalOverlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
-`
+`;
 
 export const ModalContent = styled.div`
   background: white;
@@ -221,13 +221,13 @@ export const ModalContent = styled.div`
   width: 90%;
   max-width: 500px;
   position: relative;
-`
+`;
 
 export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const CloseButton = styled.button`
   position: absolute;
@@ -237,4 +237,4 @@ export const CloseButton = styled.button`
   border: none;
   font-size: 20px;
   cursor: pointer;
-`
+`;

@@ -1,14 +1,14 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react";
 
-import { TagContainer } from './styles'
+import { TagContainer } from "./styles";
 
 export type Props = {
-  size?: 'small' | 'big'
-  children: ReactNode
-}
+  size?: "small" | "big";
+  children: ReactNode;
+};
 
-const Tag = ({ children, size = 'small' }: Props) => (
+const Tag = ({ children, size = "small" }: Props) => (
   <TagContainer size={size}>{children}</TagContainer>
-)
+);
 
-export default Tag
+export default Tag;

@@ -1,20 +1,22 @@
-import { useParams } from 'react-router-dom'
-import Loader from '../Loader'
+import { useParams } from "react-router-dom";
+import Loader from "../Loader";
 
-import { useGetFeatureEfoodQuery } from '../../services/api'
+import { useGetFeatureEfoodQuery } from "../../services/api";
 
-import { ImgBanner } from './styles'
+import { ImgBanner } from "./styles";
 
 type Params = {
-  id: string
-}
+  id: string;
+};
 
 const Banner = () => {
-  const { id } = useParams<Params>()
-  const { data: catalogoServico, isLoading } = useGetFeatureEfoodQuery(id || '')
+  const { id } = useParams<Params>();
+  const { data: catalogoServico, isLoading } = useGetFeatureEfoodQuery(
+    id || ""
+  );
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
   if (!catalogoServico) {
@@ -22,7 +24,7 @@ const Banner = () => {
       <div className="container">
         <h3>Serviço não encontrado</h3>
       </div>
-    )
+    );
   }
 
   return (
@@ -32,7 +34,7 @@ const Banner = () => {
         <h1>{catalogoServico.titulo}</h1>
       </ImgBanner>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

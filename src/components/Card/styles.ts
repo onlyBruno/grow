@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { colors } from '../../styles'
+import styled from "styled-components";
+import { colors } from "../../styles";
 
 export const Overlay = styled.div`
   position: absolute;
@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   opacity: 0.7;
-`
+`;
 
 export const Container = styled.div<{ isOverlay: boolean }>`
   position: fixed;
@@ -20,8 +20,8 @@ export const Container = styled.div<{ isOverlay: boolean }>`
   display: flex;
   justify-content: flex-end;
   z-index: 1;
-  background: ${({ isOverlay }) => (isOverlay ? 'rgba(0, 0, 0, 0.8)' : 'none')};
-`
+  background: ${({ isOverlay }) => (isOverlay ? "rgba(0, 0, 0, 0.8)" : "none")};
+`;
 
 export const Sidebar = styled.aside`
   background-color: ${colors.LightSalmon};
@@ -43,4 +43,4 @@ export const Sidebar = styled.aside`
     line-height: 16.41px;
     margin: 8px 0 16px 0;
   }
-`
+`;

@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { colors } from '../../styles'
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { colors } from "../../styles";
 
-export const ButtonContainer = styled.button<{ background: 'light' | 'dark' }>`
+export const ButtonContainer = styled.button<{ background: "light" | "dark" }>`
   border: none;
   background-color: ${(props) =>
-    props.background === 'dark' ? colors.BlanchedAlmond : colors.LightSalmon};
+    props.background === "dark" ? colors.BlanchedAlmond : colors.LightSalmon};
   color: ${(props) =>
-    props.background === 'dark' ? colors.LightSalmon : colors.BlanchedAlmond};
-  width: ${(props) => (props.background === 'dark' ? '304px' : '100%')};
+    props.background === "dark" ? colors.LightSalmon : colors.BlanchedAlmond};
+  width: ${(props) => (props.background === "dark" ? "304px" : "100%")};
   height: 100%;
   font-size: 14px;
   font-weight: 700;
@@ -24,15 +24,15 @@ export const ButtonContainer = styled.button<{ background: 'light' | 'dark' }>`
   @media (max-width: 768px) {
     max-width: 100%;
   }
-`
+`;
 
-export const ButtonLink = styled(Link)<{ background: 'light' | 'dark' }>`
-  width: ${(props) => (props.background === 'dark' ? '100%' : '84px')};
+export const ButtonLink = styled(Link)<{ background: "light" | "dark" }>`
+  width: ${(props) => (props.background === "dark" ? "100%" : "84px")};
   height: 24px;
   background-color: ${(props) =>
-    props.background === 'dark' ? colors.BlanchedAlmond : colors.LightSalmon};
+    props.background === "dark" ? colors.BlanchedAlmond : colors.LightSalmon};
   color: ${(props) =>
-    props.background === 'dark' ? colors.LightSalmon : colors.BlanchedAlmond};
+    props.background === "dark" ? colors.LightSalmon : colors.BlanchedAlmond};
   font-family: Roboto;
   font-size: 14px;
   font-weight: 700;
@@ -51,4 +51,4 @@ export const ButtonLink = styled(Link)<{ background: 'light' | 'dark' }>`
   @media (max-width: 768px) {
     max-width: 100%;
   }
-`
+`;

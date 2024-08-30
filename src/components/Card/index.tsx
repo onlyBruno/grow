@@ -1,8 +1,8 @@
-import * as S from './styles'
+import * as S from "./styles";
 
 type Props = {
-  children: JSX.Element | JSX.Element[]
-}
+  children: JSX.Element | JSX.Element[];
+};
 
 const Card = ({ children }: Props) => {
   return (
@@ -11,7 +11,7 @@ const Card = ({ children }: Props) => {
         <div className="divFormulario">{children}</div>
       </S.Sidebar>
     </S.Container>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

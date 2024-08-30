@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
-import faceSrc from '../../assets/icons/facebook.png'
-import instaSrc from '../../assets/icons/instagram.png'
-import LogoImgHome from '../../assets/icons/logo.png'
-import twSrc from '../../assets/icons/twitter.png'
+import faceSrc from "../../assets/icons/facebook.png";
+import instaSrc from "../../assets/icons/instagram.png";
+import LogoImgHome from "../../assets/icons/logo.png";
+import twSrc from "../../assets/icons/twitter.png";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 const Footer = () => (
   <S.Footers className="container">
@@ -32,6 +32,6 @@ const Footer = () => (
       estabelecimento contratado.
     </S.Titulo>
   </S.Footers>
-)
+);
 
-export default Footer
+export default Footer;

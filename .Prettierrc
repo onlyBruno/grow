@@ -1,5 +1,5 @@
 {
-  "trailingComma": "es5", // or "all" for more strict formatting
-  "semi": true,           // use semicolons
-  "singleQuote": false    // use double quotes
+  "trailingComma": "es5", 
+  "semi": true,
+  "singleQuote": false
 }

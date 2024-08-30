@@ -1,10 +1,10 @@
-import styled from 'styled-components'
-import { Props } from '.'
-import { breakpoints, colors } from '../../styles'
+import styled from "styled-components";
+import { Props } from ".";
+import { breakpoints, colors } from "../../styles";
 
 export const HeaderPage = styled.div`
   width: 100%;
-`
+`;
 
 export const Imagem = styled.div<Props>`
   max-width: 2031.81px;
@@ -39,12 +39,12 @@ export const Imagem = styled.div<Props>`
       margin-bottom: 0;
     }
   }
-`
+`;
 export const Titulo = styled.h2`
   width: 539px;
   height: 100%;
   padding-top: 120px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 28px;
   font-weight: 900;
   line-height: 42.19px;
@@ -69,7 +69,7 @@ export const Titulo = styled.h2`
     margin-top: 138.5px;
     font-size: 28px;
   }
-`
+`;
 export const ContainerHeader = styled.div`
   display: flex;
   width: 100%;
@@ -79,7 +79,7 @@ export const ContainerHeader = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     align-items: center;
   }
-`
+`;
 export const RestaurantName = styled(ContainerHeader)`
   font-size: 18px;
   font-weight: 900;
@@ -93,7 +93,7 @@ export const RestaurantName = styled(ContainerHeader)`
   @media (max-width: ${breakpoints.mobile}) {
     margin-top: 40px;
   }
-`
+`;
 export const CarrinhoDeProdutos = styled(ContainerHeader)`
   font-size: 18px;
   font-weight: 900;
@@ -110,8 +110,8 @@ export const CarrinhoDeProdutos = styled(ContainerHeader)`
     padding-left: 5%;
     text-align: center;
   }
-`
+`;
 export const CartButton = styled.span`
   color: ${colors.LightSalmon};
   cursor: pointer;
-`
+`;
