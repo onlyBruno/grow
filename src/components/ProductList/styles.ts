@@ -7,7 +7,7 @@ import {
   CardRestaurant,
   ContainerDescritivo,
   Imagem,
-  Infos,
+  Infos
 } from "../Product/styles";
 import { TagContainer } from "../Tag/styles";
 

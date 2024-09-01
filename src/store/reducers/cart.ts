@@ -16,7 +16,7 @@ type CartState = {
 
 const initialState: CartState = {
   items: [],
-  isOpen: false,
+  isOpen: false
 };
 
 const cartSlice = createSlice({
@@ -37,8 +37,8 @@ const cartSlice = createSlice({
     },
     clear: (state) => {
       state.items = [];
-    },
-  },
+    }
+  }
 });
 
 export const { add, open, close, remove, clear } = cartSlice.actions;

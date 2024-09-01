@@ -19,7 +19,7 @@ const ProductList: React.FC<Props> = ({
   background,
   efoods,
   isLoading,
-  isCardapio = false,
+  isCardapio = false
 }) => {
   const { id } = useParams<{ id: string }>();
   const location = useLocation();

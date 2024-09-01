@@ -6,13 +6,13 @@ export const colors = {
   white: "#FFFFFF",
   BrightOrange: "#FFB930",
   FloralWhite: "#FFF8F2",
-  CrimsonRed: "#fae0e4",
+  CrimsonRed: "#fae0e4"
 };
 
 export const breakpoints = {
   desktop: "1024px",
   tablet: "768px",
-  mobile: "480px",
+  mobile: "480px"
 };
 
 export const GlobalCSS = createGlobalStyle`

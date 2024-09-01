@@ -17,7 +17,7 @@ const Botao = ({
   disabled,
   to,
   onClick,
-  background,
+  background
 }: Props) => {
   if (type === "button" || type === "submit") {
     return (

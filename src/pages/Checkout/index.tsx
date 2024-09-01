@@ -42,7 +42,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       numbCard: "",
       cardCode: "",
       expiresMonth: "",
-      expiresYear: "",
+      expiresYear: ""
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
@@ -74,7 +74,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       ),
       expiresYear: Yup.string().when((values, schema) =>
         payWith ? schema.required("O campo é obrigatorio") : schema
-      ),
+      )
     }),
     onSubmit: (values) => {
       purchase({
@@ -85,8 +85,8 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
             city: values.cidade,
             zipCode: values.cep,
             number: Number(values.numero),
-            complement: values.fullComplemento,
-          },
+            complement: values.fullComplemento
+          }
         },
         payment: {
           card: {
@@ -95,16 +95,16 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
             code: Number(values.cardCode),
             expires: {
               month: Number(values.expiresMonth),
-              year: Number(values.expiresYear),
-            },
-          },
+              year: Number(values.expiresYear)
+            }
+          }
         },
         products: items.map((item) => ({
           id: item.id,
-          price: item.preco,
-        })),
+          price: item.preco
+        }))
       });
-    },
+    }
   });
 
   const checkInputHasError = (fieldName: string) => {
@@ -125,7 +125,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       numbCard: true,
       cardCode: true,
       expiresMonth: true,
-      expiresYear: true,
+      expiresYear: true
     });
     const isDeliveryValid =
       !form.errors.fullName &&

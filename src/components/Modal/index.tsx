@@ -26,7 +26,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
   descricao,
   preco,
   nome,
-  porcao,
+  porcao
 }) => {
   const dispatch = useDispatch();
   const items = useSelector(
@@ -40,7 +40,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
       descricao,
       preco,
       nome,
-      porcao,
+      porcao
     };
 
     const existingItem = items.find((cartItem) => cartItem.nome === item.nome);

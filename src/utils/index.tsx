@@ -3,7 +3,7 @@ import { CartItem } from "../store/reducers/cart";
 export const parseToBrl = (amount = 0) => {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
-    currency: "BRL",
+    currency: "BRL"
   }).format(amount);
 };
 

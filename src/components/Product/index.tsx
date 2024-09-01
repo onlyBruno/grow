@@ -42,7 +42,7 @@ const Product: React.FC<ProductProps> = ({
   to,
   background,
   currentItem,
-  shouldTruncateDescription = false,
+  shouldTruncateDescription = false
 }) => {
   const location = useLocation();
   const [isModalVisible, setIsModalVisible] = useState(false);
